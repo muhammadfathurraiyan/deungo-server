@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3000;
 
 // Apply CORS middleware to the '/product' route
 // Use your product route
-app.use(cors());
+app.use("/");
 
 app.post("/:query", async (req, res) => {
   try {
