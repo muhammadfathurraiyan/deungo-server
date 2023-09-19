@@ -1,15 +1,9 @@
+
 const express = require("express");
+const router = express.Router()
 const axios = require("axios");
-const cors = require("cors");
-require("dotenv").config();
 
-const app = express();
-
-const PORT = process.env.PORT || 3000;
-
-app.use(cors());
-
-app.post("/home/:query", async (req, res) => {
+router.post("/:query", async (req, res) => {
   try {
     const response = await axios.post(
       process.env.API_ENDPOINT,
@@ -38,4 +32,4 @@ app.post("/home/:query", async (req, res) => {
   }
 });
 
-app.listen(PORT, () => console.log(PORT));
+module.exports = router;
