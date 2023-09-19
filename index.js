@@ -9,9 +9,9 @@ const PORT = process.env.PORT || 3000;
 
 // Apply CORS middleware to the '/product' route
 // Use your product route
-app.use("/");
+app.use(cors());
 
-app.post("/:query", async (req, res) => {
+app.post("/api/:query", async (req, res) => {
   try {
     const response = await axios.post(
       process.env.API_ENDPOINT,
