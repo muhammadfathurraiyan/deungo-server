@@ -5,13 +5,11 @@ require("dotenv").config();
 
 const app = express();
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
-// Apply CORS middleware to the '/product' route
-// Use your product route
 app.use(cors());
 
-app.post("/api/:query", async (req, res) => {
+app.get("/:query", async (req, res) => {
   try {
     const response = await axios.post(
       process.env.API_ENDPOINT,
@@ -33,6 +31,7 @@ app.post("/api/:query", async (req, res) => {
     );
 
     // Send the response from the API back to the client
+    // console.log(response.data?.choices[0]?.message?.content)
     res.status(200).json(response.data?.choices[0]?.message?.content);
   } catch (error) {
     // Handle any errors that occur during the Axios request
