@@ -12,7 +12,7 @@ app.use(cors());
 app.post("/api/:query", async (req, res) => {
   try {
     const response = await axios.post(process.env.API_ENDPOINT, {
-      prompt: req.params.query + ",jawab secara singkat",
+      prompt: req.params.query,
     });
     // console.log(response.data?.choices[0]?.message?.content);
     res.status(200).json(response.data?.choices[0]?.message?.content);
